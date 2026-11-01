@@ -38,6 +38,7 @@ app.use(auth({
   clientSecret: process.env.AUTH0_CLIENT_SECRET,
   issuerBaseURL: process.env.AUTH0_ISSUER_BASE_URL,
   authorizationParams: { response_type: 'code' },
+  clientAuthMethod: 'client_secret_post',
 }));
 
 app.get('/', async (req, res) => {
