@@ -6,7 +6,7 @@ const { auth, requiresAuth } = require('express-openid-connect');
 const { auth: jwt, requiredScopes } = require('express-oauth2-jwt-bearer');
 
 const base = process.env.AUTH0_BASE_URL;
-const db = new Pool({ connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false } });
+const db = new Pool({ connectionString: process.env.POSTGRES_URL?.split('?')[0], ssl: { rejectUnauthorized: false } });
 const ready = db.query(`CREATE TABLE IF NOT EXISTS passes (
   id UUID PRIMARY KEY,
   name TEXT NOT NULL,
